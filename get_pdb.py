@@ -8,14 +8,13 @@ from Bio.PDB.PDBParser import PDBParser
 
 
 def main():
-  parser=argparse.ArgumentParser(description='supply the ion for which you want to download the pdb files i.e. ZN, CA, CO3')
+  parser=argparse.ArgumentParser(description='supply the input and outpaths to download the pdb files for a specific ion i.e. ZN, CA, CO3')
   parser.add_argument('-input', dest='file_path', type=str, help='Specify the location of pdb list i.e. data_list.txt file for the ion of interest', required=True)
   parser.add_argument('-output', dest='output_path', type=str, help='Specify the location for the pdb files to be stored', required=True)
   
   args = parser.parse_args()
   
-  
-  # ion = args.ion 
+
   file_path = args.file_path
   output_path = args.output_path
   
