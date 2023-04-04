@@ -11,6 +11,8 @@
 """
 
 import uuid
+import argparse
+import os
 from typing import Optional, Dict
 from Bio.PDB import PDBParser, SASA
 
@@ -45,24 +47,43 @@ def get_surface(antigen_sasa):
     return surface_list
 
 
-def get_sasa_surface(complex_name, chain):
-    an_path = './data/one_pdb/'
+def get_sasa_surface(complex_name, chain, an_path):
     antigen_pdb = complex_name[:4] + '_' + chain + '.pdb'
     sasa_fn = SurfaceArea()
     antigen_sasa = sasa_fn(uuid.uuid4().hex, an_path + antigen_pdb, chain)
     surface_list = get_surface(antigen_sasa)
     return surface_list
 
-if __name__ == '__main__':
-    fw = open('./data/surface/40%_surface_indep.txt','w')
-    with open('./data/40%_indep_data_list.txt','r') as fp:
+def main():
+    parser = argparse.ArgumentParser(description='supply the old and new directory to update the downloaded pdbs for a specific ion i.e. ZN, CA, CO3')
+    parser.add_argument('-input', dest='input', type=str, help='Specify the independent file i.e. 40%_indep_data_list.txt', required=True)
+    parser.add_argument('-surface-dir', dest='surface_dir', type=str, help='Specify the path to surface directory', required=True)
+    parser.add_argument('-ion', dest='ion', type=str, help='Specify the ion under consideration', required=True)
+    
+    
+    args = parser.parse_args()
+
+    input = args.input
+    surface_dir = args.surface_dir
+    ion = args.ion
+    
+    os.makedirs(surface_dir, exist_ok=True)
+    an_path = 'data/'+ion+'/one_pdb'
+    fw = open(surface_dir+'40%_surface_indep.txt','w')
+    with open(input,'r') as fp:
         for line in fp:
             name = line.strip().split('_')[0]
             chain = line.strip().split('_')[1]
-            with open('./data/surface/surface_' + str(name) + '-' + str(chain) + '.txt', 'w') as la:
+            with open(surface_dir+'surface_' + str(name) + '-' + str(chain) + '.txt', 'w') as la:
                 la.write('>' + str(name) + '-' + str(chain) + '\n')
-                la.write(get_sasa_surface(name, chain) + '\n')
+                la.write(get_sasa_surface(name, chain, an_path) + '\n')
 
                 fw.write('>' + str(name) + '-' + str(chain) + '\n')
                 fw.write(get_sasa_surface(name, chain) + '\n')
                 print(str(name) + 'over')
+
+    print("Done getting surface atoms")
+    
+if __name__ == '__main__':
+    main()
+   

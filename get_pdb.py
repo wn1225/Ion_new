@@ -31,7 +31,7 @@ def main():
           f.write(r.content)
       except:
         print('could not download pdb for '+id)
-    
+  print("Done downloading PDB files!")
       
 if __name__ == '__main__':
   main()

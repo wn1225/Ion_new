@@ -35,7 +35,7 @@ def main():
             name = line[:4].upper()
             # print(name)
             remove_HETATM(opath + str(name) + '.pdb', npath + str(name) + '.pdb')
-            
+    print("completed pdb_update!")       
 if __name__ == "__main__":
     main() 
 

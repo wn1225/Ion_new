@@ -39,6 +39,6 @@ def main():
             io_w_no_h.set_structure(structure)
             io_w_no_h.save('{}'.format(pdb_chain_file), ChainSelect(chain))
             print(pdb_chain_file)
-            
+    print("Done running divide_pdb.py")
 if __name__ == '__main__':
     main()
