@@ -26,7 +26,7 @@ def main():
             # residue = li.strip().split()[1]
             # index = li.strip().split()[3]
             label = []
-            with open(one_pdb+'/model_one_pdb/' + str(name) + '_' + str(chain) + '.pdb','r')as fp:
+            with open(one_pdb+'/one_pdb/' + str(name) + '_' + str(chain) + '.pdb','r')as fp:
                 m = -10000
                 for line in fp:
                     row = line.strip().split()

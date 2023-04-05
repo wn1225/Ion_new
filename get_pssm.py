@@ -8,11 +8,18 @@ import pandas as pandas
 def PSSM(pdb_name,chain,ipssm,out_pssm,blast):
     # with open('./pdb/fasta/' + pdb_name + '_fasta.txt','')
     os.system(
-        r'psiblast -query ' +ipssm
+        r'psiblast -query "' +ipssm
         + str(pdb_name) + '-' + str(chain)
         + '.fa"'
-        + r' -db '+ blast+'swissprot -evalue 0.001 -num_iterations 3'
-        + r' -out_ascii_pssm'+ out_pssm +
+        + r' -db '+ blast +'swissprot -evalue 0.001 -num_iterations 3'
+        + r' -out_ascii_pssm "'+ out_pssm +
+        str(pdb_name) + '-' + str(chain) +'.pssm"')
+
+    print(r'psiblast -query ' +ipssm
+        + str(pdb_name) + '-' + str(chain)
+        + '.fa"'
+        + r' -db '+ blast +'swissprot -evalue 0.001 -num_iterations 3'
+        + r' -out_ascii_pssm '+ out_pssm +
         str(pdb_name) + '-' + str(chain) +'.pssm"')
 
 

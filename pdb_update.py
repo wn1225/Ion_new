@@ -1,5 +1,4 @@
 # Remove the 'Name of non-standard residue' line from the downloaded pdb file, starting each line with 'HETATM'
-#输入pdb的路径，输出pdb的路径    
 import requests
 import os
 import argparse
@@ -35,7 +34,8 @@ def main():
             name = line[:4].upper()
             # print(name)
             remove_HETATM(opath + str(name) + '.pdb', npath + str(name) + '.pdb')
-    print("completed pdb_update!")       
+    print("completed pdb_update!")
+
 if __name__ == "__main__":
     main() 
 

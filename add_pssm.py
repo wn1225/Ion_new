@@ -18,9 +18,9 @@ def main():
     os.makedirs(pssm_path, exist_ok=True)
 
     num = 0
-    with open(label+'40%_T_label.txt', 'r') as la:
-        with open(feature+'40%_new_feature.txt', 'w') as nfe:
-            with open(feature+'40%_feature_no_pssm.txt', 'r') as fe:
+    with open(label+'label.txt', 'r') as la:
+        with open(feature+'feature_pssm.txt', 'w') as nfe:
+            with open(feature+'feature_no_pssm.txt', 'r') as fe:
                 num_acid = fe.readline().strip()
                 nfe.write(num_acid + '\n')
                 for i in range(int(num_acid)):

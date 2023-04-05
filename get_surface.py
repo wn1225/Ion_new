@@ -56,7 +56,7 @@ def get_sasa_surface(complex_name, chain, an_path):
 
 def main():
     parser = argparse.ArgumentParser(description='supply the old and new directory to update the downloaded pdbs for a specific ion i.e. ZN, CA, CO3')
-    parser.add_argument('-input', dest='input', type=str, help='Specify the independent file i.e. 40%_indep_data_list.txt', required=True)
+    parser.add_argument('-input', dest='input', type=str, help='Specify the location of file that contain the pdb chains i.e.data_list.txt', required=True)
     parser.add_argument('-surface-dir', dest='surface_dir', type=str, help='Specify the path to surface directory', required=True)
     parser.add_argument('-ion', dest='ion', type=str, help='Specify the ion under consideration', required=True)
     
@@ -66,20 +66,20 @@ def main():
     input = args.input
     surface_dir = args.surface_dir
     ion = args.ion
-    
     os.makedirs(surface_dir, exist_ok=True)
-    an_path = 'data/'+ion+'/one_pdb'
-    fw = open(surface_dir+'40%_surface_indep.txt','w')
+
+    an_path = 'data/' + str(ion) + '/one_pdb/'
+    fw = open(surface_dir+'surface_total.txt','w')
     with open(input,'r') as fp:
         for line in fp:
             name = line.strip().split('_')[0]
             chain = line.strip().split('_')[1]
-            with open(surface_dir+'surface_' + str(name) + '-' + str(chain) + '.txt', 'w') as la:
+            with open(surface_dir + 'surface_' + str(name) + '-' + str(chain) + '.txt', 'w') as la:
                 la.write('>' + str(name) + '-' + str(chain) + '\n')
                 la.write(get_sasa_surface(name, chain, an_path) + '\n')
 
                 fw.write('>' + str(name) + '-' + str(chain) + '\n')
-                fw.write(get_sasa_surface(name, chain) + '\n')
+                fw.write(get_sasa_surface(name, chain, an_path) + '\n')
                 print(str(name) + 'over')
 
     print("Done getting surface atoms")

@@ -18,9 +18,9 @@ def main():
     residues = list(residues.replace(",",''))
 
     num = 0
-    with open(fasta+'fasta_one_model_total.fa', 'r') as la:
-        with open(feature+'40%_add_types_feature.txt', 'w') as nfe:
-            with open(cfeature+'cat_new_feature.txt', 'r') as fe:
+    with open(fasta+'fasta_total.fa', 'r') as la:
+        with open(feature+'feature_pssm_types.txt', 'w') as nfe:
+            with open(cfeature, 'r') as fe:
                 num_acid = fe.readline().strip()
                 nfe.write(num_acid + '\n')
                 for i in range(int(num_acid)):
@@ -31,7 +31,7 @@ def main():
                     name = name_lines[0]
                     chain = name_lines[1]
                     num_fa = 0
-                    with open(fasta+'single_fasta/' + str(name) + '-' + str(chain) + '.fa', 'r') as ps:
+                    with open(fasta + str(name) + '-' + str(chain) + '.fa', 'r') as ps:
                         ps.readline()
                         # ps.readline()
                         # ps.readline()
