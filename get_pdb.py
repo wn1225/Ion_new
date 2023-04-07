@@ -1,7 +1,7 @@
 import requests
 import os
 import argparse
-from Bio.PDB import Select, PDBIO
+from Bio.PDB import Select, PDBIO, PDBList
 from Bio.PDB.PDBParser import PDBParser
 
 # Download the PDB files from the RCSB database website
@@ -18,19 +18,18 @@ def main():
   file_path = args.file_path
   output_path = args.output_path
   
-  
+  pdbl = PDBList()
+  os.makedirs(output_path, exist_ok=True)
   with open(file_path, 'r') as fp:
     lines = fp.read().split('\n')
     for line in lines:
       id = line[:4]
       try:
-        r = requests.get('https://files.rcsb.org/download/' + str(id) + '.pdb', stream=True)
-        print(format(id), "already downloaded", )
-        os.makedirs(output_path, exist_ok=True)
-        with open(output_path + str(id) + '.pdb', 'wb') as f:
-          f.write(r.content)
+        pdbl.retrieve_pdb_file(id,pdir=output_path,file_format="pdb")
+
       except:
         print('could not download pdb for '+id)
+      os.system("mv "+output_path+"pdb"+id.lower()+".ent  "+output_path+id.upper()+".pdb")
   print("Done downloading PDB files!")
       
 if __name__ == '__main__':

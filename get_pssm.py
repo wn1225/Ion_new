@@ -6,23 +6,13 @@ import pandas as pandas
 
 
 def PSSM(pdb_name,chain,ipssm,out_pssm,blast):
-    # with open('./pdb/fasta/' + pdb_name + '_fasta.txt','')
-    os.system(
-        r'psiblast -query "' +ipssm
-        + str(pdb_name) + '-' + str(chain)
-        + '.fa"'
-        + r' -db '+ blast +'swissprot -evalue 0.001 -num_iterations 3'
-        + r' -out_ascii_pssm "'+ out_pssm +
-        str(pdb_name) + '-' + str(chain) +'.pssm"')
-
-    print(r'psiblast -query ' +ipssm
-        + str(pdb_name) + '-' + str(chain)
-        + '.fa"'
-        + r' -db '+ blast +'swissprot -evalue 0.001 -num_iterations 3'
-        + r' -out_ascii_pssm '+ out_pssm +
-        str(pdb_name) + '-' + str(chain) +'.pssm"')
-
-
+    query = '''\
+    /storage/hpc/group/xulab/xbwecu/xbwecu/ncbi-blast-2.13.0/bin/psiblast -query {ipssm}{pdb_name}-{chain}.fa\
+    -db {blast}swissprot -evalue 0.001 -num_iterations 3\
+    -out_ascii_pssm {out_pssm}{pdb_name}-{chain}.pssm'''.format(ipssm=ipssm, pdb_name=str(pdb_name), chain=str(chain), blast=blast, out_pssm=out_pssm)
+    
+    os.system(query)
+      
     print(str(pdb_name) + " PSSM over")
     
     
@@ -40,7 +30,7 @@ def main():
     blast = args.blast
     out_pssm = args.out_pssm
     
-    os.makedirs(ipssm, exist_ok=True)
+    #os.makedirs(ipssm, exist_ok=True)
     os.makedirs(out_pssm, exist_ok=True)
     
     with open(input,'r') as fp:

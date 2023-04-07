@@ -14,7 +14,7 @@ def main():
     args = parser.parse_args()
 
     # path = args.path
-    ipath = args.ipath
+    ipath = args.ipath+'*'
     opath = args.opath
     npath = args.npath
 
