@@ -1,5 +1,6 @@
 import os
 import argparse
+from pathlib import Path
 
 def main():
     parser = argparse.ArgumentParser(description='supply the old and new directory to update the downloaded pdbs for a specific ion i.e. ZN, CA, CO3')
@@ -31,30 +32,33 @@ def main():
                     name = name_lines[0]
 
                     chain = name_lines[1]
-
-                    with open(pssm_path + str(name) + '-' + str(chain) + '.pssm', 'r') as ps:
-                        ps.readline()
-                        ps.readline()
-                        ps.readline()
-                        num_atom = fe.readline().strip()
-                        nfe.write(num_atom + '\n')
-                        line = ps.readline().strip().split()
-                        for i_a in range(int(num_atom.split()[0])):
-                            # print(line[0])
-                            try:
-                                seq_ac_pssm = int(line[0]) - 1
-                            except:
-                                print(name)
-                            feature_a = fe.readline().strip()
-                            nfe.write(feature_a + '\t')
-                            seq_ac = feature_a.split()[0]
-                            if seq_ac_pssm != int(seq_ac):
-                                line = ps.readline().strip().split()
-                                seq_ac_pssm += 1
-                            pssm = line[2:22]
-                            for num_p in range(pssm.__len__()):
-                                nfe.write(pssm[num_p] + '\t')
-                            nfe.write('\n')
+                    path = Path(pssm_path + str(name) + '-' + str(chain) + '.pssm')
+                    if path.is_file():
+                        with open(pssm_path + str(name) + '-' + str(chain) + '.pssm', 'r') as ps:
+                            ps.readline()
+                            ps.readline()
+                            ps.readline()
+                            num_atom = fe.readline().strip()
+                            nfe.write(num_atom + '\n')
+                            line = ps.readline().strip().split()
+                            for i_a in range(int(num_atom.split()[0])):
+                                # print(line[0])
+                                try:
+                                    seq_ac_pssm = int(line[0]) - 1
+                                except:
+                                    print(name)
+                                feature_a = fe.readline().strip()
+                                nfe.write(feature_a + '\t')
+                                seq_ac = feature_a.split()[0]
+                                if seq_ac_pssm != int(seq_ac):
+                                    line = ps.readline().strip().split()
+                                    seq_ac_pssm += 1
+                                pssm = line[2:22]
+                                for num_p in range(pssm.__len__()):
+                                    nfe.write(pssm[num_p] + '\t')
+                                nfe.write('\n')
+                    else:
+                        print("no pssm exists for "+ str(name) + '-' + str(chain))
                             
     print("Done adding PSSM!")   
         
