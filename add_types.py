@@ -34,37 +34,40 @@ def main():
                     num_fa = 0
                     path = Path(fasta + str(name) + '-' + str(chain) + '.fa')
                     if path.is_file():
-                        with open(fasta + str(name) + '-' + str(chain) + '.fa', 'r') as ps:
-                            ps.readline()
-                            # ps.readline()
-                            # ps.readline()
-                            num_atom = fe.readline().strip()
-                            nfe.write(num_atom + '\n')
-                            line = ps.readline().strip().split()
+                        try:
+                            with open(fasta + str(name) + '-' + str(chain) + '.fa', 'r') as ps:
+                                ps.readline()
+                                # ps.readline()
+                                # ps.readline()
+                                num_atom = fe.readline().strip()
+                                nfe.write(num_atom + '\n')
+                                line = ps.readline().strip().split()
 
-                            for i_a in range(int(num_atom.split()[0])):
-                                # print(line[0])
-                                # try:
-                                #      # seq_ac_pssm = int(line[0]) - 1
-                                #      num_fa = num_fa - 1
-                                # except:
-                                #     print(name)
-                                feature_a = fe.readline().strip()
-                                # nfe.write(feature_a + '\t')
-                                seq_ac = feature_a.split()[0]
-                                if num_fa != int(seq_ac):
-                                    # line = ps.readline().strip().split()
-                                    num_fa += 1
-                                fa = line[0][num_fa]
-                                if fa in residues:
-                                    fa = '1'
-                                else:
-                                    fa = '0'
-                                nfe.write(fa + '\t')
-                                nfe.write(feature_a + '\t')
-                                # for num_p in range(pssm.__len__()):
-                                #     nfe.write(pssm[num_p] + '\t')
-                                nfe.write('\n')
+                                for i_a in range(int(num_atom.split()[0])):
+                                    # print(line[0])
+                                    # try:
+                                    #      # seq_ac_pssm = int(line[0]) - 1
+                                    #      num_fa = num_fa - 1
+                                    # except:
+                                    #     print(name)
+                                    feature_a = fe.readline().strip()
+                                    # nfe.write(feature_a + '\t')
+                                    seq_ac = feature_a.split()[0]
+                                    if num_fa != int(seq_ac):
+                                        # line = ps.readline().strip().split()
+                                        num_fa += 1
+                                    fa = line[0][num_fa]
+                                    if fa in residues:
+                                        fa = '1'
+                                    else:
+                                        fa = '0'
+                                    nfe.write(fa + '\t')
+                                    nfe.write(feature_a + '\t')
+                                    # for num_p in range(pssm.__len__()):
+                                    #     nfe.write(pssm[num_p] + '\t')
+                                    nfe.write('\n')
+                        except:
+                                print("cannot obtain atom "+ str(name) + '-' + str(chain))    
                     else:
                         print("no pssm exists for "+ str(name) + '-' + str(chain))
 

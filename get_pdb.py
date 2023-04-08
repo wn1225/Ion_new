@@ -18,7 +18,20 @@ def main():
   file_path = args.file_path
   output_path = args.output_path
   
-  pdbl = PDBList()
+  with open(file_path, 'r') as fp:
+    lines = fp.read().split("\n")
+    for line in lines:
+      id = line[:4]
+      try:
+        r = requests.get('https://files.rcsb.org/download/' + str(id) + '.pdb', stream=True)
+        os.makedirs(output_path, exist_ok=True)
+        with open(output_path + str(id) + '.pdb', 'wb') as f:
+          f.write(r.content)
+          print(format(id), "already downloaded")
+      except:
+        print(''+id+' could not be downloaded')
+  
+  '''pdbl = PDBList()
   os.makedirs(output_path, exist_ok=True)
   with open(file_path, 'r') as fp:
     lines = fp.read().split('\n')
@@ -29,7 +42,9 @@ def main():
 
       except:
         print('could not download pdb for '+id)
-      os.system("mv "+output_path+"pdb"+id.lower()+".ent  "+output_path+id.upper()+".pdb")
+      os.system("mv "+output_path+"pdb"+id.lower()+".ent  "+output_path+id.upper()+".pdb")'''
+      
+      
   print("Done downloading PDB files!")
       
 if __name__ == '__main__':
