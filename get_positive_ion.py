@@ -24,8 +24,9 @@ def main():
     ion = ipath.split('/')[1]
     ion_l = len(ion)
     residue_list = list(r)
+    flag = 0
 
-    fw = open(ipath + 'positive.txt', 'w')
+    fw = open(ipath + 'positive.txt', 'a')
     with open(input, 'r') as fp:
         for lines in fp:
             row = lines.strip().split()
@@ -130,57 +131,57 @@ def main():
                                     flag = 0
                                     if row[0].find(ion) != -1:
                                         index_l = row[0].find(ion)
-                                    index = row[0][:index_l]
+                                        index = row[0][:index_l]
 
-                                    row[0] = row[0][index_l:]
-                                    # if ('ZN' in row[0]) == True :
-                                    if c == chain:
-                                        # radius = row[15:18]
-                                        if radius == 'GLY':
-                                            radius = 'G'
-                                        elif radius == 'ALA':
-                                            radius = 'A'
-                                        elif radius == 'VAL':
-                                            radius = 'V'
-                                        elif radius == 'LEU':
-                                            radius = 'L'
-                                        elif radius == 'ILE':
-                                            radius = 'I'
-                                        elif radius == 'PRO':
-                                            radius = 'P'
-                                        elif radius == 'PHE':
-                                            radius = 'F'
-                                        elif radius == 'TYR':
-                                            radius = 'Y'
-                                        elif radius == 'TRP':
-                                            radius = 'W'
-                                        elif radius == 'SER':
-                                            radius = 'S'
-                                        elif radius == 'THR':
-                                            radius = 'T'
-                                        elif radius == 'CYS':
-                                            radius = 'C'
-                                        elif radius == 'MET':
-                                            radius = 'M'
-                                        elif radius == 'ASN':
-                                            radius = 'N'
-                                        elif radius == 'GLN':
-                                            radius = 'Q'
-                                        elif radius == 'ASP':
-                                            radius = 'D'
-                                        elif radius == 'GLU':
-                                            radius = 'E'
-                                        elif radius == 'LYS':
-                                            radius = 'K'
-                                        elif radius == 'ARG':
-                                            radius = 'R'
-                                        elif radius == 'HIS':
-                                            radius = 'H'
-                                        if len(radius) == 1 and (radius in residue_list):
-                                            # index = row[9:-12]
-                                            fw.write(str(pdb) + '_' + str(chain) + ' ' + str(radius) + ' ' + str(
-                                                chain) + ' ' + str(
-                                                index) + '\n')
+                                        row[0] = row[0][index_l:]
+                                        # if ('ZN' in row[0]) == True :
+                                        if c == chain:
+                                            # radius = row[15:18]
+                                            if radius == 'GLY':
+                                                radius = 'G'
+                                            elif radius == 'ALA':
+                                                radius = 'A'
+                                            elif radius == 'VAL':
+                                                radius = 'V'
+                                            elif radius == 'LEU':
+                                                radius = 'L'
+                                            elif radius == 'ILE':
+                                                radius = 'I'
+                                            elif radius == 'PRO':
+                                                radius = 'P'
+                                            elif radius == 'PHE':
+                                                radius = 'F'
+                                            elif radius == 'TYR':
+                                                radius = 'Y'
+                                            elif radius == 'TRP':
+                                                radius = 'W'
+                                            elif radius == 'SER':
+                                                radius = 'S'
+                                            elif radius == 'THR':
+                                                radius = 'T'
+                                            elif radius == 'CYS':
+                                                radius = 'C'
+                                            elif radius == 'MET':
+                                                radius = 'M'
+                                            elif radius == 'ASN':
+                                                radius = 'N'
+                                            elif radius == 'GLN':
+                                                radius = 'Q'
+                                            elif radius == 'ASP':
+                                                radius = 'D'
+                                            elif radius == 'GLU':
+                                                radius = 'E'
+                                            elif radius == 'LYS':
+                                                radius = 'K'
+                                            elif radius == 'ARG':
+                                                radius = 'R'
+                                            elif radius == 'HIS':
+                                                radius = 'H'
+                                            if len(radius) == 1 and (radius in residue_list):
+                                                # index = row[9:-12]
+                                                fw.write(str(pdb) + '_' + str(chain) + ' ' + str(radius) + ' ' + str(
+                                                    chain) + ' ' + str(
+                                                    index) + '\n')
 
     print("done generating positive examples!")
 
