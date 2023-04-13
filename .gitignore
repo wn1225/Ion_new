@@ -7,8 +7,8 @@ delete.ipynb
 /data/ZN/pdb_update
 /data/ZN/more_mods.txt
 db
-!fasta/fasta_total.fa
 fasta/
+!fasta/fasta_total.fa
 feature
 label
 one_pdb
