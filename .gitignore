@@ -1,13 +1,7 @@
 .env
 delete.ipynb
-/data/ZN/fasta
-/data/ZN/more_mods_pdb
-/data/ZN/one_pdb
-/data/ZN/pdb
-/data/ZN/pdb_update
-/data/ZN/more_mods.txt
 db
-fasta/
+fasta
 !fasta/fasta_total.fa
 feature
 label
