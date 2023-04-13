@@ -1,0 +1,2 @@
+cannot obtain atom 1J07-A
+Done adding types!

@@ -1,0 +1,5 @@
+cannot obtain atom 1M7G-C
+cannot obtain atom 2JKY-A
+cannot obtain atom 3QTM-A
+cannot obtain atom 2FEP-S
+Done adding types!

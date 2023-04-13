@@ -1,0 +1,8 @@
+cannot obtain atom 2AQS-A
+cannot obtain atom 4B61-B
+cannot obtain atom 3WI9-A
+cannot obtain atom 3TU6-A
+cannot obtain atom 3HHS-A
+cannot obtain atom 1EKJ-G
+cannot obtain atom 1NOL-A
+Done adding types!

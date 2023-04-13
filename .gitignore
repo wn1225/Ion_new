@@ -7,6 +7,14 @@ delete.ipynb
 /data/ZN/pdb_update
 /data/ZN/more_mods.txt
 db
-/data/MG
-/data/MN
-
+!fasta/fasta_total.fa
+fasta/
+feature
+label
+one_pdb
+pdb
+pssm
+pdb_update
+more_mods_pdb
+surface
+swissprot

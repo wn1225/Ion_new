@@ -1,0 +1,3 @@
+cannot obtain atom 1FDI-A
+cannot obtain atom 2XZI-A
+Done adding types!

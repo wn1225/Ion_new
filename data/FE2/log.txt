@@ -1,0 +1,5 @@
+while downloading add_types.py
+
+cannot obtain atom 1CC1-L
+cannot obtain atom 2BQ8-X
+cannot obtain atom 1ZT5-A

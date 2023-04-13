@@ -7,7 +7,7 @@ import pandas as pandas
 
 def PSSM(pdb_name,chain,ipssm,out_pssm,blast):
     query = '''\
-    /storage/hpc/group/xulab/xbwecu/xbwecu/ncbi-blast-2.13.0/bin/psiblast -query {ipssm}{pdb_name}-{chain}.fa\
+    psiblast -query {ipssm}{pdb_name}-{chain}.fa\
     -db {blast}swissprot -evalue 0.001 -num_iterations 3\
     -out_ascii_pssm {out_pssm}{pdb_name}-{chain}.pssm'''.format(ipssm=ipssm, pdb_name=str(pdb_name), chain=str(chain), blast=blast, out_pssm=out_pssm)
     

@@ -1,0 +1,5 @@
+cannot obtain atom 3DH4-D
+cannot obtain atom 3NTU-A
+cannot obtain atom 1TC8-A
+cannot obtain atom 1NZA-A
+cannot obtain atom 3BIA-X
