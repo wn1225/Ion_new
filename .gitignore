@@ -7,7 +7,6 @@ feature
 label
 one_pdb
 pdb
-pssm
 pdb_update
 more_mods_pdb
 surface
