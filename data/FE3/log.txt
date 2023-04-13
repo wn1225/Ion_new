@@ -1,4 +1,3 @@
-the following were observed after running add_types.py
 cannot obtain atom 3UUS-G
 cannot obtain atom 3NTE-A
 cannot obtain atom 3OMI-C

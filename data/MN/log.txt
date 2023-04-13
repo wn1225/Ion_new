@@ -1,5 +1,3 @@
-these were observed after running add_types.
-
 cannot obtain atom 3PIF-C
 cannot obtain atom 4FLI-A
 cannot obtain atom 4GGF-S

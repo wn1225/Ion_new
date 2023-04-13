@@ -1,5 +1,3 @@
-these were observed after running add_types.py
-
 cannot obtain atom 1HPM-A
 cannot obtain atom 1D7U-A
 cannot obtain atom 1M5H-E
