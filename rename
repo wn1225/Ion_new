@@ -1,0 +1,37 @@
+import argparse
+import glob
+import os
+import zipfile
+
+import os
+flist = []
+def getFlist(path,npath,file):
+    num = 0
+    for file_abs in glob.glob(path):
+        num += 1
+        print(file_abs)
+    with open(npath,'r')as fp:
+        lines = fp.readlines()
+    for i in range(1,num+1):
+        new_name = lines[(i-1)*2].strip().split()[0][1:]
+        # with open(path + '/2474496bb712c97ebdec42da6ab48468/_' + str(i) + '.pssm','r')as f:
+        os.rename(path[:-1] + file + '_' + str(i) + '.pssm', npath[:-11] +new_name+'.pssm')
+
+
+    return flist
+
+def un_zip(file_name):
+   """unzip zip file"""
+   zip_file = zipfile.ZipFile(file_name)
+   if os.path.isdir(file_name + "_files"):
+       pass
+   else:
+       os.mkdir(file_name + "_files")
+   for names in zip_file.namelist():
+       zip_file.extract(names,file_name + "_files/")
+   zip_file.close()
+
+
+un_zip('./PO4.zip')
+getFlist('./PO4.zip_files/pssm/79f5e33b00614d9a4d628ce0391440e8/*','data/PO4/pssm/no_pssm.txt','79f5e33b00614d9a4d628ce0391440e8')
+
