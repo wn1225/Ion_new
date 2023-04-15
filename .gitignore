@@ -11,3 +11,5 @@ pdb_update
 more_mods_pdb
 surface
 swissprot
+*.zip_files
+*.zip
