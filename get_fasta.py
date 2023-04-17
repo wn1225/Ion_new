@@ -6,7 +6,7 @@ def main():
     parser.add_argument('-input', dest='input', type=str, help='Specify the location of file that contain the pdb chains i.e. data_list.txt for the specific ion of interest', required=True)
     parser.add_argument('-model-one-path', dest='model_one', type=str, help='Specify the path to model-one-pdb', required=True)
     parser.add_argument('-fasta-dir', dest='fasta', type=str, help='Specify the location for the fasta directory', required=True)
-    #parser.add_argument('-one-model-output', dest='one_model_output', type=str, help='Specify the one_model_output directory', required=True)
+    # parser.add_argument('-one-model-output', dest='one_model_output', type=str, help='Specify the one_model_output directory', required=True)
     
     
     args = parser.parse_args()
@@ -18,7 +18,7 @@ def main():
     os.makedirs(fasta, exist_ok=True)
     # os.makedirs(one_model_output, exist_ok=True)
 
-    fw = open(fasta + 'fasta_total.fa', 'w')
+    fw = open(fasta + 'fasta_total.txt', 'w')
     # fw = open('./data/ind264_data/ind264_data_list.txt','w')
 
     with open(input,'r')as fp:
@@ -125,6 +125,9 @@ def main():
                             elif row[3] == 'HIS':
                                 fw.write('H')
                                 ff.write('H')
+                            else:
+                                fw.write('X')
+                                ff.write('X')
                             m = str(row[5])
             fw.write('\n')
             ff.write('\n')
