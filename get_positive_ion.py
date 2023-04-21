@@ -107,8 +107,7 @@ def main():
                                         radius = 'R'
                                     elif radius == 'HIS':
                                         radius = 'H'
-                                    else:
-                                        radius = 'X'
+                              
                                     if len(radius) == 1 and (radius in residue_list):
                                         index = row[0][:-12]
                                         fw.write(
