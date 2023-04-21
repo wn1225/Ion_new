@@ -35,6 +35,8 @@ def main():
         if r[i].find('>') != -1:
             fp.write(r[i][1:5] + '_' + r[i][6] + '\n')
         # fw.write(r[i] + '\n')
+       
+    print("done removing data!")
 
 if __name__ == "__main__":
     main()
