@@ -388,7 +388,7 @@ directory_name = mpath
 file_name = "metrics"
 file_path = os.path.join(directory_name, file_name)
 ff = open(file_path, 'w')
-for fold in [0, 1]:
+for fold in [0, 1,2,3,4]:
 
     ff.write(str(fold) + '_model' + '\n')
     train, val = divide_cdhit(dataset, fold, int(tnum))
